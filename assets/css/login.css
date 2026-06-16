@@ -1,0 +1,852 @@
+/* 1. Importando Estilos Anteriores */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    font-family: inherit;
+}
+
+/* 2. Utilidades */
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 3. Logo (Usado no Header e Rodapé do Site) */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logo-ícone {
+    width: 2rem;
+    height: 2rem;
+    background-color: #7c3aed;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-image {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.logo-ícone-interno {
+    width: 1rem;
+    height: 1rem;
+    background-color: #5b21b6;
+    border-radius: 0.25rem;
+}
+
+.logo-texto {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+@media (max-width: 639px) {
+    .logo-texto {
+        font-size: 1.125rem;
+    }
+}
+
+/* 4. Header de Autenticação */
+
+.auth-header {
+    padding: 1.5rem 1rem;
+    position: relative;
+    z-index: 20;
+}
+
+@media (min-width: 640px) {
+    .auth-header {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .auth-header {
+        padding: 1.5rem 2rem;
+    }
+}
+
+/* 5. Contêiner Principal */
+
+.auth-principal {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 450px);
+}
+
+@media (min-width: 640px) {
+    .auth-principal {
+        padding: 3rem 1.5rem;
+        min-height: calc(100vh - 400px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .auth-principal {
+        padding: 3rem 2rem;
+    }
+}
+
+/* 6. Decoração do Fundo do Site (Círculos e Quadrados) */
+
+.auth-fundo-decorativo {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.auth-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.auth-circle-1 {
+    top: -5rem;
+    right: -5rem;
+    width: 16rem;
+    height: 16rem;
+    background-color: #7c3aed;
+    opacity: 0.05;
+}
+
+@media (min-width: 640px) {
+    .auth-circle-1 {
+        width: 24rem;
+        height: 24rem;
+        opacity: 0.1;
+    }
+}
+
+.auth-circle-2 {
+    top: 50%;
+    left: -8rem;
+    width: 12rem;
+    height: 12rem;
+    background-color: #6d28d9;
+    opacity: 0.05;
+}
+
+@media (min-width: 640px) {
+    .auth-circle-2 {
+        width: 20rem;
+        height: 20rem;
+        opacity: 0.1;
+    }
+}
+
+.auth-circle-3 {
+    bottom: -5rem;
+    right: 25%;
+    width: 10rem;
+    height: 10rem;
+    background-color: #5b21b6;
+    opacity: 0.05;
+}
+
+@media (min-width: 640px) {
+    .auth-circle-3 {
+        width: 18rem;
+        height: 18rem;
+        opacity: 0.1;
+    }
+}
+
+.auth-circle-4 {
+    display: none;
+}
+
+@media (min-width: 640px) {
+    .auth-circle-4 {
+        display: block;
+        top: 5rem;
+        right: 25%;
+        width: 12rem;
+        height: 12rem;
+        background-color: #4c1d95;
+        opacity: 0.08;
+    }
+}
+
+.auth-circle-5 {
+    display: none;
+}
+
+@media (min-width: 640px) {
+    .auth-circle-5 {
+        display: block;
+        bottom: 10rem;
+        left: 25%;
+        width: 10rem;
+        height: 10rem;
+        background-color: #7c3aed;
+        opacity: 0.08;
+    }
+}
+
+.auth-square {
+    position: absolute;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .auth-square {
+        display: block;
+    }
+
+    .auth-square-1 {
+        top: 33%;
+        left: 5rem;
+        width: 5rem;
+        height: 5rem;
+        background-color: #6d28d9;
+        transform: rotate(45deg);
+        opacity: 0.08;
+    }
+
+    .auth-square-2 {
+        bottom: 33%;
+        right: 5rem;
+        width: 4rem;
+        height: 4rem;
+        background-color: #7c3aed;
+        transform: rotate(12deg);
+        opacity: 0.08;
+    }
+
+    .auth-square-3 {
+        top: 50%;
+        right: 33%;
+        width: 3rem;
+        height: 3rem;
+        background-color: #5b21b6;
+        transform: rotate(30deg);
+        opacity: 0.1;
+    }
+}
+
+/* 7. Contêiner de Autenticação */
+
+.auth-container {
+    width: 100%;
+    max-width: 28rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* 8. Card de Autenticação */
+
+.auth-card {
+    background-color: #7c3aed;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+    .auth-card {
+        padding: 2rem;
+    }
+}
+
+/* 9. Abas de Autenticação */
+
+.auth-abas {
+    display: flex;
+    gap: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+.auth-aba {
+    flex: 1;
+    padding: 0.625rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 640px) {
+    .auth-aba {
+        font-size: 1rem;
+    }
+}
+
+.auth-aba:hover {
+    color: #ffffff;
+}
+
+.auth-aba.ativa {
+    background-color: #ffffff;
+    color: #7c3aed;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 10. Texto do Header de Autenticação */
+
+.auth-header-texto {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.auth-título {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .auth-título {
+        font-size: 1.875rem;
+    }
+}
+
+.auth-subtítulo {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 640px) {
+    .auth-subtítulo {
+        font-size: 1rem;
+    }
+}
+
+/* 11. Formulário de Autenticação */
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.ativo {
+    display: block;
+}
+
+.form-grupo {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.input-w {
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.input-ícone {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.esconder-senha {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.25rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.esconder-senha:hover {
+    color: #ffffff;
+}
+
+.olho-fechado-ícone.hidden,
+.olho-ícone.hidden {
+    display: none;
+}
+
+/* 12. Botão de Entrar */
+
+.btn-entrar {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    color: #7c3aed;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-entrar:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-entrar:active {
+    transform: translateY(0);
+}
+
+/* 13. Texto dos Termos e Condições */
+
+.termos-texto {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+.termos-texto a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.termos-texto a:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+/* 14. Texto do Rodapé de Autenticação */
+
+.auth-rodapé-texto {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+.switch-link {
+    color: #a78bfa;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+}
+
+.switch-link:hover {
+    color: #c4b5fd;
+}
+
+/* 15. Rodapé do Site */
+
+.rodapé {
+    padding: 2rem 1rem;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.8) 0%,
+        #000000 20%,
+        #000000 100%);
+    border-top: 1px solid rgba(124, 58, 237, 0.2);
+    margin-top: auto;
+}
+
+@media (min-width: 640px) {
+    .rodapé {
+        padding: 3rem 1.5rem;
+    }
+}
+
+.rodapé-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .rodapé-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .rodapé-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.rodapé-marca {
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .rodapé-marca {
+        text-align: left;
+    }
+}
+
+.rodapé-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+}
+
+.rodapé-logo .logo-icon {
+
+    width: 2.3rem;
+    height: 2.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.rodapé-logo .logo-image {
+
+    width: 85%;
+    height: 85%;
+
+    object-fit: contain;
+}
+
+@media (min-width: 640px) {
+    .rodapé-logo {
+        justify-content: flex-start;
+    }
+}
+
+.rodapé-logo .logo-texto {
+    font-size: 1.125rem;
+}
+
+@media (min-width: 640px) {
+    .rodapé-logo .logo-texto {
+        font-size: 1.25rem;
+    }
+}
+
+.rodapé-slogan {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .rodapé-slogan {
+        font-size: 1rem;
+    }
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .redes-sociais {
+        justify-content: flex-start;
+    }
+}
+
+.rede-social {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #7c3aed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+}
+
+.rede-social:hover {
+    opacity: 0.7;
+}
+
+.rodapé-links-col,
+.rodapé-contato-col {
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .rodapé-links-col,
+    .rodapé-contato-col {
+        text-align: left;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+    .rodapé-contato-col {
+        grid-column: span 2;
+    }
+}
+
+.rodapé-cabeçalho {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .rodapé-cabeçalho {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.rodapé-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rodapé-links a {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    transition: color 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .rodapé-links a {
+        font-size: 1rem;
+    }
+}
+
+.rodapé-links a:hover {
+    color: #ffffff;
+}
+
+.rodapé-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rodapé-email span {
+    word-break: break-all;
+}
+
+.rodapé-baixo {
+    border-top: 1px solid #3a3a3a;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+@media (min-width: 640px) {
+    .rodapé-baixo {
+        padding-top: 1.5rem;
+        gap: 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .rodapé-baixo {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.copyright {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .copyright {
+        text-align: left;
+    }
+}
+
+.rodapé-legal {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .rodapé-legal {
+        gap: 1.5rem;
+    }
+}
+
+.rodapé-legal a {
+    color: #9ca3af;
+    transition: color 0.3s ease;
+}
+
+.rodapé-legal a:hover {
+    color: #ffffff;
+}
+
+/* 16. Animações */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 17. Acessibilidade */
+
+*:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+}
+
+button:focus-visible {
+    outline-color: #ffffff;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+@media print {
+    .auth-fundo-decorativo,
+    .rodapé {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}
